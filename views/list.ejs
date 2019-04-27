@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>To Do List</title>
+</head>
+<body>
+
+    <div class="box" id='heading'>
+            <h1> <%= kindOfDay %></h1>
+    </div>
+
+    <div class="box">
+
+
+        <% todoitems.forEach(el =>{ %> 
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name = "checkBox" value = "<%= el._id %>"onChange="this.form.submit()">
+                    <p><%= el.name%></p>
+                </div>  
+                <input type="hidden" name=  "listName" value = "<%= kindOfDay %>"></input>
+            </form>
+        <%});%>
+
+      
+        <form class="item" action="/" method="post">
+
+            <input type="text" name="newListItem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name = "list" value="<%= kindOfDay %>">+</button>
+        
+        </form>
+    </div>
+    
+    
+    
+</body>
+</html>
